@@ -10,7 +10,7 @@ do
     then
         ./tipctl.phar domain:dns:updatednsentry $DOMAIN $RECORD $TTL $TYPE $CurrentIP
         LastSet=$CurrentIP
-        echo "Set $RECORD.$DOMAIN -> $CurrentIP"
+        echo "$(date +'%Y-%m-%d %T') Set $RECORD.$DOMAIN -> $CurrentIP"
     fi
 
     sleep $INTERVAL
