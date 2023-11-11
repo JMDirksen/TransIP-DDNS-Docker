@@ -31,6 +31,10 @@ docker run -it \
 ```
 Replace `-it` for `-d` to run the container in the background (or detach from the running container by pressing Ctrl+P followed by Ctrl+Q)
 
+## Show logs
+
+`docker logs tipddns`
+
 
 # Environment variables
 
