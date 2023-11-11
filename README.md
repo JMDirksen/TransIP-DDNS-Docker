@@ -20,14 +20,28 @@ This project uses:
 
 ## Run container
 
+Example loading private key from file 'private.key':
 ```
 docker run -it \
   -e LOGINNAME=myusername \
   -e PRIVATEKEY="$(cat private.key)" \
   -e DOMAIN=mydomain.com \
   -e RECORD=@ \
-  --rm --name tipddns tipddns
+  --restart unless-stopped --name tipddns tipddns
 ```
 Replace `-it` for `-d` to run the container in the background
 
+
 # Environment variables
+
+Variable | Default value | Description
+--|--|--
+**LOGINNAME** | myusername | Your TransIP username
+**PRIVATEKEY** | myprivatekey | The private key from the key-pair generated at the TransIP API settings. See run example above when the key is stored in a file named 'private.key'
+**DOMAIN** | mydomain.com | The domainname registered at TransIP from which you want to update a record
+RECORD | @ | The DNS record name for which to change the IP address (@, *, www, etc.)
+TTL | 300 | The Time-To-Live of the DNS record, defaults to 5 minutes
+TYPE | A | The type of the record to update
+INTERVAL | 300 | The interval in seconds before checking again if the public IP has changed
+
+***BOLD**: These variables must be changed, the other variables could be left at their defaults.*
