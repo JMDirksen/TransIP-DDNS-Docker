@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "$(date +'%Y-%m-%d %T') Started"
+sleep $(($RANDOM % 30))
+
 # Setup
 ./tipctl.phar setup -n --apiUseWhitelist=false --loginName="$LOGINNAME" --apiPrivateKey="$PRIVATEKEY" -vvv
 LastSet="?"

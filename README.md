@@ -29,7 +29,7 @@ docker run -it \
   -e RECORD=@ \
   --restart unless-stopped --name tipddns tipddns
 ```
-Replace `-it` for `-d` to run the container in the background (or detach from the running container by pressing Ctrl+P followed by Ctrl+Q)
+Replace `-it` for `-itd` to run the container in the background (or detach from the running container by pressing Ctrl+P followed by Ctrl+Q)
 
 ## Show logs
 
