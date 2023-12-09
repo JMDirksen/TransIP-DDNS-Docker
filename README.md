@@ -16,9 +16,9 @@ This project uses:
 
 ## Build or pull image
 
-`docker build -t tipddns .`  
+`docker build -t jmdirksen/tipddns:latest .`  
 or  
-`docker pull jmdirksen/tipddns`  
+`docker pull jmdirksen/tipddns:latest`  
 
 ## Run container
 
@@ -29,7 +29,7 @@ docker run -it \
   -e PRIVATEKEY="$(cat private.key)" \
   -e DOMAIN=mydomain.com \
   -e RECORD=@ \
-  --restart unless-stopped --name tipddns tipddns
+  --restart unless-stopped --name tipddns jmdirksen/tipddns:latest
 ```
 Replace `-it` for `-itd` to run the container in the background (or detach from the running container by pressing Ctrl+P followed by Ctrl+Q)
 
