@@ -14,9 +14,11 @@ This project uses:
 
 # Usage / Commands
 
-## Build image
+## Build or pull image
 
 `docker build -t tipddns .`
+or
+`docker pull jmdirksen/tipddns`
 
 ## Run container
 
