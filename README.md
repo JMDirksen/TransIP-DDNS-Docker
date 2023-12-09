@@ -16,9 +16,9 @@ This project uses:
 
 ## Build or pull image
 
-`docker build -t tipddns .`
-or
-`docker pull jmdirksen/tipddns`
+`docker build -t tipddns .`  
+or  
+`docker pull jmdirksen/tipddns`  
 
 ## Run container
 
