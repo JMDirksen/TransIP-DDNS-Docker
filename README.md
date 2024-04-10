@@ -49,5 +49,6 @@ RECORD | @ | The DNS record name for which to change the IP address (@, *, www, 
 TTL | 300 | The Time-To-Live of the DNS record, defaults to 5 minutes
 TYPE | A | The type of the record to update
 INTERVAL | 300 | The interval in seconds before checking again if the public IP has changed
+ALWAYSLOG | false | When set to true, log wil show IP has been checked but DNS did not need to be updated
 
 ***BOLD**: These variables must be changed, the other variables could be left at their defaults.*

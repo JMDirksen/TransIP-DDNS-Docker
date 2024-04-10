@@ -33,7 +33,12 @@ do
             echo "$(date +'%Y-%m-%d %T') Set $RECORD.$DOMAIN -> $CurrentIP"
 
         fi
-        
+    
+    elif [ $ALWAYSLOG = true ]; then
+
+        #Log that no changes have been made
+        echo "$(date +'%Y-%m-%d %T') IP address not changed"
+    
     fi
 
     sleep $INTERVAL
