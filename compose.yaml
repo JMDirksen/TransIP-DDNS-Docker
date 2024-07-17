@@ -5,7 +5,7 @@ services:
       LOGINNAME: myusername
       PRIVATEKEY: -----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----
       DOMAIN: mydomain.com
-      RECORD: @
+      RECORD: '@'
       TTL: 300
       TYPE: A
       INTERVAL: 300
