@@ -41,12 +41,8 @@ Replace `-it` for `-itd` to run the container in the background (or detach from 
 
 Variable | Default value | Description
 --|--|--
-**LOGINNAME** | myusername | Your TransIP username
-**DOMAINS** | mydomain.com,myotherdomain.com | The domainnames registered at TransIP from which you want to update a record
-RECORD | @ | The DNS record name for which to change the IP address (@, *, www, etc.)
-TTL | 300 | The Time-To-Live of the DNS record, defaults to 5 minutes
-TYPE | A | The type of the record to update
-INTERVAL | 300 | The interval in seconds before checking again if the public IP has changed
-ALWAYSLOG | false | When set to true, log wil show IP has been checked but DNS did not need to be updated
+**LOGINNAME** | myusername                     | Your TransIP username
+**DOMAINS**   | mydomain.com,myotherdomain.com | The domainnames registered at TransIP from which you want to update a record
+ALWAYSLOG     | true                           | When set to true, log wil show IP has been checked but DNS did not need to be updated
 
 ***BOLD**: These variables must be changed, the other variables could be left at their defaults.*
