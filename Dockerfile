@@ -6,7 +6,7 @@ RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 ENV LOGINNAME=myusername
 ENV PRIVATEKEY=myprivatekey
-ENV DOMAIN=mydomain.com
+ENV DOMAIN=mydomain.com,myotherdomain.com
 ENV RECORD=@
 ENV TTL=300
 ENV TYPE=A

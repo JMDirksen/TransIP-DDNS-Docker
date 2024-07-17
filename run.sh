@@ -30,14 +30,30 @@ do
 
     # Check if IP has changed
     if [ "$CurrentIP" != "$LastSet" ]; then
+        Success=true
 
-        # Update DNS record
-        ./tipctl.phar domain:dns:updatednsentry $DOMAIN $RECORD $TTL $TYPE $CurrentIP
-        if [ $? == 0 ]; then
+        # Iterate over each domain in the array
+        for DOMAIN in $(echo $DOMAINS | tr ',' ' '); do
 
-            # IP has been set
+            # Update DNS record for the current domain
+            ./tipctl.phar domain:dns:updatednsentry $DOMAIN $RECORD $TTL $TYPE $CurrentIP
+
+            if [ $? == 0 ]; then
+
+                # IP has been set for the current domain
+                echo "$(date +'%Y-%m-%d %T'): Set $RECORD.$DOMAIN -> $CurrentIP."
+            else
+                Success=false
+
+                # Failed to set IP for the current domain
+                echo "$(date +'%Y-%m-%d %T'): Failed to set $RECORD.$DOMAIN -> $CurrentIP."
+            fi
+        done
+
+        if [ $Success = true ]; then
+
+            # Update LastSet only if all updates were successful
             LastSet=$CurrentIP
-            echo "$(date +'%Y-%m-%d %T') Set $RECORD.$DOMAIN -> $CurrentIP."
         fi
 
     elif [ $ALWAYSLOG = true ]; then

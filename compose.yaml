@@ -4,7 +4,7 @@ services:
     environment:
       LOGINNAME: myusername
       PRIVATEKEY: -----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----
-      DOMAIN: mydomain.com
+      DOMAIN: mydomain.com,myotherdomain.com
       RECORD: '@'
       TTL: 300
       TYPE: A
