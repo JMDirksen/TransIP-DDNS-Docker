@@ -1,0 +1,15 @@
+services:
+  tipddns:
+    container_name: tipddns
+    image: jmdirksen/tipddns:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./private.key:/app/private.key:ro
+    environment:
+      TZ: Europe/Amsterdam
+      LOGINNAME: myusername
+      DOMAINS: mydomain.com,myotherdomain.com
+      ALWAYSLOG: true

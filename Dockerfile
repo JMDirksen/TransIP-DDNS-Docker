@@ -1,16 +1,15 @@
-FROM php:cli
-WORKDIR /root
-COPY --chmod=700 run.sh .
-ADD --chmod=700 https://github.com/transip/tipctl/releases/latest/download/tipctl.phar tipctl.phar
+FROM php:cli-alpine
+
+RUN apk add -U --no-cache \
+    tzdata \
+    curl
+
 RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
-ENV LOGINNAME=myusername
-ENV PRIVATEKEY=myprivatekey
-ENV DOMAIN=mydomain.com,myotherdomain.com
-ENV RECORD=@
-ENV TTL=300
-ENV TYPE=A
-ENV INTERVAL=300
-ENV ALWAYSLOG=false
+COPY root/ /
 
-CMD ./run.sh
+WORKDIR /app
+RUN chmod +x ./run.sh
+ADD --chmod=755 https://github.com/transip/tipctl/releases/latest/download/tipctl.phar tipctl.phar
+
+CMD /app/run.sh

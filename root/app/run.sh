@@ -3,7 +3,7 @@
 echo "$(date +'%Y-%m-%d %T'): Started."
 
 # Setup TransIP CLI
-./tipctl.phar setup -n --loginName="$LOGINNAME" --apiPrivateKey="$PRIVATEKEY" --apiUseWhitelist=false -vvv
+./tipctl.phar setup -n --loginName="$LOGINNAME" --apiPrivateKey="$(cat /app/private.key)" --apiUseWhitelist=false -vvv
 if [ $? -ne 0 ]; then
 
     # TransIP setup failed
@@ -11,6 +11,12 @@ if [ $? -ne 0 ]; then
 
     exit 1
 fi
+
+# Set default values
+RECORD=@
+TYPE=A
+TTL=300
+INTERVAL=300
 
 LastSet="?"
 
