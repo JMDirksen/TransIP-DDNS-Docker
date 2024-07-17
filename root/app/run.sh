@@ -13,7 +13,8 @@ if [ $? -ne 0 ]; then
 fi
 
 # Set default values
-RECORD=@
+ROOTRECORD=@
+SUBRECORD=*
 TYPE=A
 TTL=300
 INTERVAL=300
@@ -41,18 +42,22 @@ do
         # Iterate over each domain in the array
         for DOMAIN in $(echo $DOMAINS | tr ',' ' '); do
 
-            # Update DNS record for the current domain
-            ./tipctl.phar domain:dns:updatednsentry $DOMAIN $RECORD $TTL $TYPE $CurrentIP
+            # Update subdomain DNS record, allow failures
+            ./tipctl.phar domain:dns:updatednsentry "$DOMAIN" "$SUBRECORD" $TTL "$TYPE" "$CurrentIP"
 
+            # Update root domain DNS record
+            ./tipctl.phar domain:dns:updatednsentry "$DOMAIN" "$ROOTRECORD" $TTL "$TYPE" "$CurrentIP"
+
+            # Check if the IP has been set for the root domain
             if [ $? == 0 ]; then
 
-                # IP has been set for the current domain
-                echo "$(date +'%Y-%m-%d %T'): Set $RECORD.$DOMAIN -> $CurrentIP."
+                # IP has been set for the current root domain
+                echo "$(date +'%Y-%m-%d %T'): Set $ROOTRECORD.$DOMAIN -> $CurrentIP."
             else
                 Success=false
 
-                # Failed to set IP for the current domain
-                echo "$(date +'%Y-%m-%d %T'): Failed to set $RECORD.$DOMAIN -> $CurrentIP."
+                # Failed to set IP for the current root domain
+                echo "$(date +'%Y-%m-%d %T'): Failed to set $ROOTRECORD.$DOMAIN -> $CurrentIP."
             fi
         done
 
