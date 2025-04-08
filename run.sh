@@ -24,8 +24,13 @@ do
     # Check if IP has changed
     if [ "$CurrentIP" != "$LastSet" ]; then
         
-        # Update DNS record
-        ./tipctl.phar domain:dns:updatednsentry $DOMAIN $RECORD $TTL $TYPE $CurrentIP
+        # Set the DNS entry value
+        if [[ "$RECORD" == "wildcard" ]]; then
+            ./tipctl.phar domain:dns:updatednsentry $DOMAIN '*' $TTL $TYPE $CurrentIP
+        else
+            ./tipctl.phar domain:dns:updatednsentry $DOMAIN $RECORD $TTL $TYPE $CurrentIP
+        fi
+
         if [ $? == 0 ]; then
 
             # IP has been set

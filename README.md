@@ -45,7 +45,7 @@ Variable | Default value | Description
 **LOGINNAME** | myusername | Your TransIP username
 **PRIVATEKEY** | myprivatekey | The private key from the key-pair generated at the TransIP API settings. See run example above when the key is stored in a file named 'private.key'
 **DOMAIN** | mydomain.com | The domainname registered at TransIP from which you want to update a record
-RECORD | @ | The DNS record name for which to change the IP address (@, *, www, etc.)
+RECORD | @ | The DNS record name for which to change the IP address (@, www, etc.). For wildcard (*) use 'wildcard'.
 TTL | 300 | The Time-To-Live of the DNS record, defaults to 5 minutes
 TYPE | A | The type of the record to update
 INTERVAL | 300 | The interval in seconds before checking again if the public IP has changed
